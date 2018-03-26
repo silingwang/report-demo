@@ -62,7 +62,6 @@ local.properties
 
 ######################
 logs/
-target/
 
 ######################
 # Gradle
@@ -130,4 +129,4 @@ Desktop.ini
 !.mvn/wrapper/maven-wrapper.jar
 /hi.conf
 /oc-build/
-!/target/
+
