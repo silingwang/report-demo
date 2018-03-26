@@ -5,7 +5,7 @@
 
     <groupId>springboot</groupId>
     <artifactId>report-demo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>report-demo</name>
     <!-- <name>springboot-mybatis :: 整合 Mybatis Demo</name>-->
 
