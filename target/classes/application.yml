@@ -1,0 +1,23 @@
+server:
+    port: 8081
+spring:
+  http:
+    encoding.charset: UTF-8
+    encoding.enable: true
+    encoding.force: true
+  aop:
+    proxy-target-class: true
+
+  application:
+     name: report-demo
+logging:
+  level:
+    org.springframework.web: ERROR
+    org.spring.springboot: info
+
+
+
+
+
+
+

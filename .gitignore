@@ -130,3 +130,4 @@ Desktop.ini
 !.mvn/wrapper/maven-wrapper.jar
 /hi.conf
 /oc-build/
+!/target/
