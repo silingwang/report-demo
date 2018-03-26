@@ -9,6 +9,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 
 /**
@@ -21,6 +22,7 @@ import org.springframework.context.annotation.Configuration;
 // mapper 接口类扫描包配置
 @EnableCaching
 @Configuration
+
 public class Application {
 
     public static void main(String[] args) {
@@ -42,7 +44,7 @@ public class Application {
         FilterRegistrationBean registration = new FilterRegistrationBean();
         registration.setFilter(new MyFilter());//添加过滤器
         registration.addUrlPatterns("/report/post");//设置过滤路径，/*所有路径
-        registration.addInitParameter("name", "alue");//添加默认参数
+        registration.addInitParameter("token", "value");//添加默认参数
         registration.setName("MyFilter");//设置优先级
         registration.setOrder(1);//设置优先级
         return registration;
