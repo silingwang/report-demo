@@ -43,7 +43,7 @@ public class Application {
     public FilterRegistrationBean testFilterRegistration() {
         FilterRegistrationBean registration = new FilterRegistrationBean();
         registration.setFilter(new MyFilter());//添加过滤器
-        registration.addUrlPatterns("/report/post");//设置过滤路径，/*所有路径
+        registration.addUrlPatterns("/*");//设置过滤路径，/*所有路径
         registration.addInitParameter("token", "value");//添加默认参数
         registration.setName("MyFilter");//设置优先级
         registration.setOrder(1);//设置优先级

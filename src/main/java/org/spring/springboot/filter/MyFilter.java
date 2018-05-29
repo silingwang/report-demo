@@ -2,6 +2,7 @@ package org.spring.springboot.filter;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.*;
@@ -11,6 +12,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 
 /**
+ * 过滤器
  * Created by nice on 2018/3/15.
  */
 @Slf4j
@@ -40,7 +42,7 @@ public class MyFilter implements Filter {
         log.info("this is MyFilter,url :" + request.getRequestURI());
         String characterEncoding = request.getCharacterEncoding();
         log.info("request  CharacterEncoding  "+ characterEncoding);
-        if (StringUtils.isEmpty(request.getParameter("token"))){
+        if (StringUtils.isEmpty(request.getParameter("token"))){ //如果token 为空就过滤
             response.setStatus(403);
             response.getOutputStream().println("token is empty");
             return;

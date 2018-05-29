@@ -22,7 +22,7 @@ public class MyInterceptor2 implements HandlerInterceptor {
             log.info(DateUtil.formatDate(new Date(), DateUtil.YEAR_MONTH_DAY_HH_MM_SS) + " MyInterceptor2  preHandle  time ");
             return true;
         }
-        return false;
+        return true;
     }
 
     @Override

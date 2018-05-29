@@ -19,8 +19,10 @@ import java.util.Arrays;
 @Slf4j       //日志
 @Component  //普通组件
 public class LogAspect {
-    @Pointcut("execution(public * org.spring.springboot.web.*.*(..))")
-    public void webLog(){}
+    @Pointcut("execution(public * org.spring.springboot.web.*.*(..))")//定义切点
+    public void webLog(){
+
+    }
 
     @Before("webLog()")
     public void deBefore(JoinPoint joinPoint) throws Throwable {
@@ -38,7 +40,9 @@ public class LogAspect {
 
     @AfterReturning(returning = "ret", pointcut = "webLog()")
     public void doAfterReturning(Object ret) throws Throwable {
+
         // 处理完请求，返回内容
+
         System.out.println("方法的返回值 : " + ret);
     }
 //
@@ -48,11 +52,11 @@ public class LogAspect {
 //        System.out.println("方法异常时执行.....");
 //    }
 //
-//    //后置最终通知,final增强，不管是抛出异常或者正常退出都会执行
-//    @After("webLog()")
-//    public void after(JoinPoint jp){
-//        System.out.println("方法最后执行.....");
-//    }
+    //后置最终通知,final增强，不管是抛出异常或者正常退出都会执行
+    @After("webLog()")
+    public void after(JoinPoint jp){
+        System.out.println("方法最后执行.....");
+    }
 //
 //    //环绕通知,环绕增强，相当于MethodInterceptor
 //    @Around("webLog()")

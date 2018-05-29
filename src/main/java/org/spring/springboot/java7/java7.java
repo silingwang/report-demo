@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.spring.springboot.entity.User;
+import org.spring.springboot.util.DateUtil;
 import org.spring.springboot.util.JsonUtil;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -12,10 +13,7 @@ import org.springframework.stereotype.Service;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -73,7 +71,7 @@ public class java7 {
     /**
      *比较器  TreeMap 默认是按升序排序，也可以指定排序的比较器
      */
-    @Scheduled(cron = "0 35 9 * * *")
+    @Scheduled(cron = "0 18 15 * * *")
     public void testTreeSet() {
         User user = new User(14879L, "A", 20);
         User user1=new User(148791L,"B",19);
@@ -151,5 +149,14 @@ public class java7 {
         nums.stream().filter(num -> num != null).count();
 
     }
-
+    /**
+     * java8 之 Stream
+     * 流一旦用了就没有了
+     */
+    @Scheduled(cron = "50 15 15 * * *")
+    public void testDate() {
+        String time="201801";
+        Date date = DateUtil.formatDateTimeStr(time, "yyyyMM");
+        log.info("testDate  date  ");
+    }
 }

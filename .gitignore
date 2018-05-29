@@ -2,3 +2,4 @@
 report-demo.iml
 target/classes/org/
 target/generated-sources/
+/target/
