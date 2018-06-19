@@ -23,7 +23,6 @@ import java.util.stream.Stream;
  */
 @Slf4j
 @Service
-@EnableScheduling  //开启定时任务支持
 public class java7 {
     /**
      * switch  支持 字符串类型

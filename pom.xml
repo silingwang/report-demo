@@ -7,6 +7,7 @@
     <artifactId>report-demo</artifactId>
     <version>1.0.0</version>
     <name>report-demo</name>
+    <packaging>war</packaging>
     <!-- <name>springboot-mybatis :: 整合 Mybatis Demo</name>-->
 
     <!-- Spring Boot 启动父依赖 -->
@@ -69,12 +70,12 @@
             <!--<version>${mybatis-spring-boot}</version>-->
         <!--</dependency>-->
 
-        <!--&lt;!&ndash; MySQL 连接驱动依赖 &ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>mysql</groupId>-->
-            <!--<artifactId>mysql-connector-java</artifactId>-->
-            <!--<version>${mysql-connector}</version>-->
-        <!--</dependency>-->
+        <!-- MySQL 连接驱动依赖 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector}</version>
+        </dependency>
 
         <!-- Junit -->
         <dependency>
@@ -86,6 +87,11 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.16.18</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc14</artifactId>
+            <version>10.2.0.1.0</version>
         </dependency>
         <dependency>
             <groupId>javax.persistence</groupId>
@@ -135,6 +141,12 @@
             <artifactId>poi</artifactId>
             <version>3.10.1</version>
         </dependency>
+        <!--Tomcat依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -147,6 +159,11 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
+            </plugin>
+            <!--解决 Spring Boot:jar中没有主清单属性-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

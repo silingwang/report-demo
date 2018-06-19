@@ -5,7 +5,9 @@ import org.apache.catalina.filters.RemoteIpFilter;
 import org.spring.springboot.filter.MyFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,18 +24,22 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 // mapper 接口类扫描包配置
 @EnableCaching
 @Configuration
-
-public class Application {
+@EnableScheduling  //开启定时任务支持
+public class Application extends SpringBootServletInitializer {
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(Application.class);
+    }
 
     public static void main(String[] args) {
         // 程序启动入口
         // 启动嵌入式的 Tomcat 并初始化 Spring 环境及其各 Spring 组件
         SpringApplication.run(Application.class, args);
     }
-    @Bean
-    public RemoteIpFilter remoteIpFilter() {
-        return new RemoteIpFilter();
-    }
+//    @Bean
+//    public RemoteIpFilter remoteIpFilter() {
+//        return new RemoteIpFilter();
+//    }
 
     /**
      * 配置,过滤器,过滤路径
@@ -43,7 +49,7 @@ public class Application {
     public FilterRegistrationBean testFilterRegistration() {
         FilterRegistrationBean registration = new FilterRegistrationBean();
         registration.setFilter(new MyFilter());//添加过滤器
-        registration.addUrlPatterns("/*");//设置过滤路径，/*所有路径
+//        registration.addUrlPatterns("/*");//设置过滤路径，/*所有路径
         registration.addInitParameter("token", "value");//添加默认参数
         registration.setName("MyFilter");//设置优先级
         registration.setOrder(1);//设置优先级
