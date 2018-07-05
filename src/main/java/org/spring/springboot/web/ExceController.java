@@ -1,5 +1,6 @@
 package org.spring.springboot.web;
 
+import com.itextpdf.text.Document;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.hssf.usermodel.*;
@@ -267,6 +268,7 @@ public class ExceController {
         ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
         byte[] b = new byte[1024];
         while ((bais.read(b)) > 0) {
+            Document document = new Document();
             os.write(b);
         }
         bais.close();

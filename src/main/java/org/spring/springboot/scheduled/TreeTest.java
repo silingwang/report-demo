@@ -20,11 +20,7 @@ public class TreeTest {
         List<MenuExt> list=new ArrayList<>();
         MenuExt menuExtA=new MenuExt();
         menuExtA.setId(1L);
-
         List<MenuExt> treeMenus = beanUtils.createTreeMenus(null);
-
-
-
         return treeMenus;
     }
 

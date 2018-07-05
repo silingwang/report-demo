@@ -16,7 +16,7 @@ public class pdfQrcode {
         Document document = new Document();
         PdfWriter writer = PdfWriter.getInstance(document, new
 //pdf输出地址
-                FileOutputStream("E:\\github\\report-demo\\src\\main\\resources\\scanner.pdf"));
+                FileOutputStream("./src/main/resources/scanner.pdf"));
 
         document.open();
         PdfContentByte cb = writer.getDirectContent();

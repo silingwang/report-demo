@@ -2,13 +2,13 @@ package org.spring.springboot.reflect;
 
 import lombok.extern.slf4j.Slf4j;
 import org.spring.springboot.entity.MenuExt;
+import org.spring.springboot.entity.User;
+import org.spring.springboot.util.JsonUtil;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.lang.reflect.Method;
+import java.util.*;
 
 /**
  * Created by nice on 2018/3/20.
@@ -99,5 +99,23 @@ public class BeanUtils {
                 log.info(" 实例化异常  " + e.getMessage());
             }
         return (T) t;
+    }
+    public static Map<String,Object> getMethod(){
+        Map<String,Object> map=new HashMap<>();
+        User user = new User();
+        Class<? extends User> aClass = user.getClass();
+        Method[] methods = aClass.getMethods();
+        List<String> list=new ArrayList<>();
+        list.add("id");
+        list.add("userName");
+        list.add("age");
+        for (Method method:methods) {
+            for (String li: list) {
+                if (method.getName().equalsIgnoreCase("set"+li)){
+                    map.put(li,method);
+                }
+            }
+        }
+        return map;
     }
 }
