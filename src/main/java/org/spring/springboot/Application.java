@@ -1,6 +1,7 @@
 package org.spring.springboot;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.filters.RemoteIpFilter;
 import org.spring.springboot.filter.MyFilter;
 import org.springframework.boot.SpringApplication;
@@ -25,6 +26,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableCaching
 @Configuration
 @EnableScheduling  //开启定时任务支持
+@Slf4j
 public class Application extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
@@ -35,6 +37,43 @@ public class Application extends SpringBootServletInitializer {
         // 程序启动入口
         // 启动嵌入式的 Tomcat 并初始化 Spring 环境及其各 Spring 组件
         SpringApplication.run(Application.class, args);
+        System.out.println(Runtime.getRuntime().freeMemory()/1024/1024);
+        System.out.println(Runtime.getRuntime().totalMemory()/1024/1024);
+        System.out.println(Runtime.getRuntime().maxMemory()/1024/1024);
+        log.info("==============================================");
+        try {
+            Thread.sleep(3000);
+        } catch (Exception ee) {
+            ee.printStackTrace();
+        }
+        String[] aaa = new String[20000000];
+        System.out.println(Runtime.getRuntime().freeMemory()/1024/1024);
+        System.out.println(Runtime.getRuntime().totalMemory()/1024/1024);
+        System.out.println(Runtime.getRuntime().maxMemory()/1024/1024);
+        try {
+            Thread.sleep(3000);
+        } catch (Exception ee) {
+            ee.printStackTrace();
+        }
+//        String d="aaaa";
+        long time = System.currentTimeMillis();
+        for (int i = 0; i < 20000000; i++) {
+//            aaa[i] = d;
+            aaa[i]=new String("aaaa");
+        }
+        long endTime = System.currentTimeMillis();
+        log.info("耗时   :   "+(endTime-time));
+        log.info("==============================================");
+        System.out.println(Runtime.getRuntime().freeMemory()/1024/1024);
+        System.out.println(Runtime.getRuntime().totalMemory()/1024/1024);
+        System.out.println(Runtime.getRuntime().maxMemory()/1024/1024);
+        try {
+            Thread.sleep(3000);
+        } catch (Exception ee) {
+            ee.printStackTrace();
+        }
+
+
     }
 //    @Bean
 //    public RemoteIpFilter remoteIpFilter() {
